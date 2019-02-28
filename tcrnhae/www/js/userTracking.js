@@ -9,5 +9,5 @@ function trackLocation(){
 function showPosition(position){
 	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
 	//change the map zoom so that all the data is shown
-	//mymap.fitBounds(L.marker.getBounds());
+	mymap.fitBounds(L.marker.getBounds());
 }
