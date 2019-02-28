@@ -44,12 +44,9 @@ var earthquakelayer;
 function loadEarthquakelayer(earthquakedata){
 	//convert the text to JSON
 	var earthquakejson=JSON.parse(earthquakedata);
-	//load the geoJSON layer
-	earthquakelayer=L.geoJson(earthquakejson,
-		{
-			//use point to layer to create the points
-			pointToLayer:function(feature,latlng)
-	}).addTo(mymap);
+	//add the JSON layer onto the map-it will appear using the default icons
+	earthquakelayer=L.geoJson(earthquakejson).addTo(mymap);
+
 	//change the map zoom so that all the data is shown
 	mymap.fitBounds(earthquakelayer.getBounds());
 }
