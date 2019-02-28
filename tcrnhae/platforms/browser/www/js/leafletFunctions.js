@@ -17,8 +17,6 @@ function addPointLinePoly(){
 	}).addTo(mymap).bindPopup("I am a polygon.");
 
 }
-//call the function
-addPointLinePoly()
 
 //create a variable to hold the layer itself
 var earthquakelayer;
