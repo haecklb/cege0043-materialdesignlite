@@ -1,3 +1,5 @@
+var client;
+
 function addPointLinePoly(){
 	//add a point
 	L.marker([51.5, -0.09]).addTo(mymap);
@@ -15,3 +17,5 @@ function addPointLinePoly(){
 	}).addTo(mymap).bindPopup("I am a polygon.");
 
 }
+
+addPointLinePoly()
