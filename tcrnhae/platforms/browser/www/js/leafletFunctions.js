@@ -76,7 +76,5 @@ var testMarkerPink=L.AwesomeMarkers.icon({
 	markerColor:'pink'
 });
 
-document.addEventListener('DOMContentLoaded',function(){
-	getEarthquakes();
-},false);	
+
 
