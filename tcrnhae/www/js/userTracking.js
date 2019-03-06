@@ -14,7 +14,8 @@ function showPosition(position){
 		mymap.removeLayer(userMarker);
 	}
 	userMarker=L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
-	mymap.setView([position.coords.latitude, position.coords.longitude], 13)
+	mymap.setView([position.coords.latitude, position.coords.longitude], 13);
+	getDistance();
 }
 
 function getDistance(){
@@ -26,8 +27,8 @@ function getDistance(){
 function getDistanceFromPoint(position){
 	//find the coordinates of a point using this website:
 	//these are the coordinates for UCL Institute of Archaeology
-	var lat=51.524616;
-	var long=-0.13818;
+	var lat=51.5246;
+	var long=-0.1340;
 	//return the distance in kilometers
 	var distance=calculateDistance(position.coords.latitude, position.coords.longitude, lat, long, 'K');
 	if(distance<=0.1){
