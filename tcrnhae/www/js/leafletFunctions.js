@@ -1,4 +1,5 @@
 var client;
+var earthquakes;
 
 function addPointLinePoly(){
 	//add a point
@@ -42,6 +43,7 @@ var earthquakelayer;
 function loadEarthquakelayer(earthquakedata){
 	//convert the text to JSON
 	var earthquakejson=JSON.parse(earthquakedata);
+	earthquakes=earthquakejson;
 
 	//load the geoJSON layer
 	earthquakelayer=L.geoJson(earthquakejson,
