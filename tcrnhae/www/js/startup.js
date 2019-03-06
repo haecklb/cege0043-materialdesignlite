@@ -3,3 +3,8 @@ function startup(){
 		trackAndCircle();
 	}, false);
 }
+
+function trackAndCircle(){
+	trackLocation();
+	addPointLinePoly();
+}
