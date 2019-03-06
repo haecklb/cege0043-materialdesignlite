@@ -30,7 +30,9 @@ function getDistanceFromPoint(position){
 	var long=-0.13818;
 	//return the distance in kilometers
 	var distance=calculateDistance(position.coords.latitude, position.coords.longitude, lat, long, 'K');
-	document.getElementById('showDistance').innerHTML="Distance:"+distance;
+	if(distance<=0.1){
+		alert("You are within 100m of UCL");
+	}
 }
 
 //code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
