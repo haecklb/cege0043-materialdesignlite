@@ -70,3 +70,4 @@ position.coords.longitude, obj.geometry.coordinates[0], obj.geometry.coordinates
 	}
 	alert("Earthquake: " +closestQuake+" is distance " +minDistance+ " away");
 }
+
