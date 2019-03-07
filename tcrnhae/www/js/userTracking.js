@@ -13,7 +13,7 @@ function showPosition(position){
 	if(userMarker){
 		mymap.removeLayer(userMarker);
 	}
-	userMarker=L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(userLocationPop(position));
+	userMarker=L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>You were here</b>");
 	mymap.setView([position.coords.latitude, position.coords.longitude], 13);
 	getDistance();
 }
@@ -71,14 +71,3 @@ position.coords.longitude, obj.geometry.coordinates[0], obj.geometry.coordinates
 	alert("Earthquake: " +closestQuake+" is distance " +minDistance+ " away");
 }
 
-//create a custom popup
-var popup=L.popup();
-
-//create an event detector to wait for the user's click event and then use the popup to show them where they clicked
-//note that you don't need to do any complicated maths to convert screen coordinates to real world coordinates-the Leaflet API does this for you
-function userLocationPop(position) {
-	popup
-		.setLatLng(position.latlng)
-		.setContent("You clicked the map at "+ position.latlng.toString())
-		.openOn(mymap);
-}
