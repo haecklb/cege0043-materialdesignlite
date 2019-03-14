@@ -1,8 +1,8 @@
 var xhrNode; //define the global variable to process the AJAX request
 function callDivNodeJSChange(){
 	xhrNode=new XMLHttpRequest();
-	var url="http://developer.cege.ucl.ac.uk:"+httpPortNumber;
-	xhrNode.open("GET", url, true);
+	var filename=document.getElementById("filename").value;
+	xhrNode.open("GET", filename, true);
 	xhrNode.onreadystatechange=processDivNodeJSChange;
 	try{
 		xhrNode.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
