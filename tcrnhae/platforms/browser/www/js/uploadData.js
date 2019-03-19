@@ -38,8 +38,9 @@ var client; //the global variable that holds the request
 
 function processData(postString){
 	client=new XMLHttpRequest();
-	var url = 'http://developer.cege.ucl.ac.uk:30276/reflectData'
-	//alert(url);
+	postString=postString + "&port_id=" + httpPortNumber;
+	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber +'/uploadData';
+	alert(url);
 	client.open('POST',url, true);
 	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	client.onreadystatechange=dataUploaded;
