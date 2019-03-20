@@ -1,8 +1,6 @@
 var client;
 var earthquakes;
-
-//create a variable that will hold the formdata layer
-var formdatalayer;
+var tablegeomlayer;
 
 function addPointLinePoly(){
 	//add a point
@@ -23,34 +21,34 @@ function addPointLinePoly(){
 }
 
 
-//create the code to get the formdata using an XMLHttpRequest
-function getFormData(tablename, geomcolumn){
+//create the code to get the table geojson data using an XMLHttpRequest
+function getTableGeom(tablename, geomcolumn){
 	client=new XMLHttpRequest();
 	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber +'/getGeoJSON/' +tablename+ '/' +geomcolumn;
 	alert(url);
 	client.open('GET',url);
-	client.onreadystatechange=formdataResponse;
+	client.onreadystatechange=tableGeomResponse;
 	client.send();
 }
 
 //create the code to wait for the response from the data server, and process the response once received
 //this function listens out for the server to say the data is ready (has state 4)
-function formdataResponse(){
+function tableGeomResponse(){
 	if(client.readyState==4){
-		var formdata=client.responseText;
-		loadFormDataLayer(formdata);
+		var tablegeom=client.responseText;
+		loadTableGeomLayer(tablegeom);
 	}
 }
 
-function loadFormDataLayer(formdata){
+function loadTableGeomLayer(tablegeom){
 	//convert text to JSON
-	var formdatajson=JSON.parse(formdata);
+	var tablegeomjson=JSON.parse(tablegeom);
 
 	//add the JSON layer onto the map-it will appear using the default icons
-	formdatalayer=L.geoJson(formdatajson).addTo(mymap);
+	tablegeomlayer=L.geoJson(tablegeomjson).addTo(mymap);
 
 	//change the map zoom so that all the data is shown
-	mymap.fitBounds(formdatalayer.getBounds());
+	mymap.fitBounds(tablegeomlayer.getBounds());
 }
 
 
