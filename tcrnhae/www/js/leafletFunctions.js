@@ -1,6 +1,9 @@
 var client;
 var earthquakes;
 
+//create a variable that will hold the formdata layer
+var formdatalayer;
+
 function addPointLinePoly(){
 	//add a point
 	L.marker([51.5, -0.09]).addTo(mymap);
@@ -18,6 +21,40 @@ function addPointLinePoly(){
 	}).addTo(mymap).bindPopup("I am a polygon.");
 
 }
+
+
+//create the code to get the formdata using an XMLHttpRequest
+function getFormData(){
+	client=new XMLHttpRequest();
+	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber +'/getFormData/' + httpPortNumber;
+	alert(url);
+	client.open('GET',url);
+	client.onreadystatechange=formdataResponse;
+	client.send();
+}
+
+//create the code to wait for the response from the data server, and process the response once received
+//this function listens out for the server to say the data is ready (has state 4)
+function formdataResponse(){
+	if(client.readyState==4){
+		var formdata=client.responseText;
+		loadFormDataLayer(formdata);
+	}
+}
+
+function loadFormDataLayer(formdata){
+	//convert text to JSON
+	var formdatajson=JSON.parse(formdata);
+
+	//add the JSON layer onto the map-it will appear using the default icons
+	formdatalayer=L.geoJson(formdatajson).addTo(mymap);
+
+	//change the map zoom so that all the data is shown
+	mymap.fitBounds(formdatalayer.getBounds());
+}
+
+
+
 
 //create a variable to hold the layer itself
 var earthquakelayer;
@@ -37,8 +74,7 @@ function earthquakeResponse(){
 		loadEarthquakelayer(earthquakedata);
 	}
 }
-//define a global variable to hold the layer so that we can use it later on
-var earthquakelayer;
+
 //convert the received data-which is text-to JSON format and add it to the map
 function loadEarthquakelayer(earthquakedata){
 	//convert the text to JSON
