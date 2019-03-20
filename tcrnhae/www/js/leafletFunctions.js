@@ -26,7 +26,7 @@ function addPointLinePoly(){
 //create the code to get the formdata using an XMLHttpRequest
 function getFormData(){
 	client=new XMLHttpRequest();
-	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber +'/getFormData/' + httpPortNumber;
+	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber +'/getGeoJSON/:tablename/:geomcolumn/:portNumber?';
 	alert(url);
 	client.open('GET',url);
 	client.onreadystatechange=formdataResponse;
