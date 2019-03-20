@@ -1,6 +1,6 @@
 function trackAndCircle(){
-	trackLocation();
 	getPort();
+	trackLocation();
 	addPointLinePoly();
 	getFormData();
 }
