@@ -15,7 +15,9 @@ function getPort(){
 	//the location of the config file is different
 	//if we are on a phone then http and https won't be present
 	var configLocation="res/port.xml";
-	xhr.open("get", configLocation, true);
+	xhr.open("get", configLocation, false);
+	//false allows us to make the call synchronous so that nothing
+	//else will happen until the port number is returned
 	xhr.send();
 
 }

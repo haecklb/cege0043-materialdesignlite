@@ -1,8 +1,8 @@
 function trackAndCircle(){
+	getPort();
 	trackLocation();
 	addPointLinePoly();
-	getEarthquakes();
-	getPort();
+	startFormDataLoad();
 }
 
 function startup(){
