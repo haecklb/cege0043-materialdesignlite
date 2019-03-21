@@ -2,7 +2,7 @@ function trackAndCircle(){
 	getPort();
 	trackLocation();
 	addPointLinePoly();
-	startFormDataLoad();
+	
 }
 
 function startup(){
